@@ -19,5 +19,6 @@ NY Cab trip data wrapped in a API to make it more useful
 - Once the date is entered, the user would then be prompted to enter medallion(s) using "**Enter 1 or more Medallions in a comma separated format, without spaces**"
 - After medallions have been entered the next option "**Ignore cached data? Y to ignore or N to use cache**" would show up. Depending on the input the caching mechanism will either be used or ignored. 
 - If the query is successful the server would respond with a json shown on the terminal in the format given below
-{"trips":[{"medallion":"D7D598CD99978BD012A87A76A7C891B7","count":3},{"medallion":"5455D5FF2BD94D10B304A15D4B7F2735","count":2},{"medallion":"801C69A08B51470871A8110F8B0505EE","count":1}]}
-- In case it responds with {"error":"dial tcp 152.28.1.1:3306: connect: connection refused"}, please try to restart the server.
+```{"trips":[{"medallion":"D7D598CD99978BD012A87A76A7C891B7","count":3},{"medallion":"5455D5FF2BD94D10B304A15D4B7F2735","count":2},{"medallion":"801C69A08B51470871A8110F8B0505EE","count":1}]}```
+- In case it responds with ```{"error":"dial tcp 152.28.1.1:3306: connect: connection refused"}```, please try to restart the server.
+![Alt text](/Client_Terminal_Screenshot.png?raw=true "Client Terminal")
