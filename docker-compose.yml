@@ -1,0 +1,50 @@
+version: '3.3'
+
+services:
+  db:
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'ny_cab_data'
+      MYSQL_USER: 'pamela'
+      MYSQL_PASSWORD: '1234'
+      MYSQL_ROOT_PASSWORD: '123'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - my-db:/var/lib/mysql
+    networks:
+      cabnet:
+        ipv4_address: 152.28.1.1
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DB_NAME=ny_cab_data
+      - DB_USER=pamela
+      - DB_PASS=1234
+      - DB_HOST=152.28.1.1
+      - DB_PORT=3306
+    ports:
+      - '8080:8080'
+    networks:
+      cabnet:
+        ipv4_address: 152.28.1.2
+    depends_on:
+      - db
+
+volumes:
+  my-db:
+
+networks:
+  cabnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 152.28.0.0/16
