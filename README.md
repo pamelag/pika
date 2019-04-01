@@ -22,3 +22,18 @@ NY Cab trip data wrapped in a API to make it more useful
 ```{"trips":[{"medallion":"D7D598CD99978BD012A87A76A7C891B7","count":3},{"medallion":"5455D5FF2BD94D10B304A15D4B7F2735","count":2},{"medallion":"801C69A08B51470871A8110F8B0505EE","count":1}]}```
 - In case it responds with ```{"error":"dial tcp 152.28.1.1:3306: connect: connection refused"}```, please try to restart the server.
 ![Alt text](/Client_Terminal_Screenshot.png?raw=true "Client Terminal")
+
+## Code Structure
+The code is based on the concepts defined in the Domain driven design approach. It has the following packages:
+
+- **cab** is pure domain package for the cab trips. It consists of Trip, TripCount and TripQueryFields structs and TripRepository interface. The domain layer is used by application services and infrastructure layers.
+
+- **client** is the client for the API based on a terminal user interface.
+
+- **db** has the mysql docker and the sql script file.
+
+- **insight** contains the application services corresponding to the query and clear cache use-cases. 
+
+- **mysql** contains a mysql implementation of the repository interface. The repository interface is defined in cab package.
+
+- **server** has the code for routing, decoding requests, encoding responses, secure headers and recoverer middleware.
