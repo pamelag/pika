@@ -1,5 +1,5 @@
 # pika
-NY Cab trip data wrapped in a API to make it more useful
+NY Cab trip data wrapped in an API to make it more useful
 
 ## Objective
 - Provide an API wrapper for NY Cab trip data
